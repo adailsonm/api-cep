@@ -12,6 +12,7 @@ metadata:
   
   annotations:
     github.com/project-slug: "adailsonm/api-cep"
+    backstage.io/techdocs-ref: dir:.
   
   links:
     - url: https://github.com/adailsonm/api-cep
@@ -29,3 +30,43 @@ spec:
   owner: group:default/team-cep
   providesApis:
     - api-cep
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: viacep-api
+  description: API externa ViaCEP para Consulta de CEPs Brasileiros
+  tags:
+    - external
+    - api
+    - third-party
+  links:
+    - url: https://viacep.com.br/
+      title: ViaCEP Website
+      icon: website
+
+    - url: https://viacep.com.br/ws/01001000/json/
+      title: ViaCEP API Example
+      icon: docs
+spec:
+  type: external-api
+  owner: group:default/team-cep
+  dependencyOf:
+    - component:default/api-cep
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: api-cep
+  description: API para Consulta de CEP usando ViaCEP
+  tags:
+    - rest
+    - openapi
+    - cep
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: user:default/guest
+  system: api-cep
+  definition:
+    $text: ./openapi.yaml
