@@ -13,6 +13,7 @@ metadata:
   annotations:
     github.com/project-slug: "adailsonm/api-cep"
     backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: api-cep
   
   links:
     - url: https://github.com/adailsonm/api-cep
